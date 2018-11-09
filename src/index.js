@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom';
-import LayoutIg from './layout';
+import Data from './data';
 import React from 'react';
 
-
-ReactDOM.render(<LayoutIg />, document.getElementById('root'));
+ReactDOM.render(<Data />, document.getElementById('root'));
