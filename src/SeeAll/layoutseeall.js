@@ -2,57 +2,59 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import SeeAll from './layoutseeall';
-import ListItem from './listItems';
+import ListItem from '../listItems';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    marginLeft : 20,
+    marginLeft : 0,
     fontFamily :'sans-serif',
     fontSize: 10,
     color:'grey',
-    position:'fixed'
+    position:'static'
   },
   card: {
-    position : 'relative',
-    height : 240,
-    width : 220,
+    position : 'static',
+    height : 110,
+    width : 'relative',
+    minWidth: 400
   },
   title: {
     fontSize: 18,
-    textAlign : 'center'
+    textAlign : 'left',
+    marginLeft: 100,
+    marginTop:-60,
+    postion:'relative'
   },
   pos: {
-    marginBottom: 12,
-    textAlign : 'center'
+    marginBottom: -150,
+    textAlign : 'left',
+    marginLeft: 100,
+    position:'relative'
   },
   button: {
     margin: theme.spacing.unit,
-    display : 'block',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-  },
-  row: {
-    display: 'flex',
-    justifyContent: 'center',
+    marginLeft:'auto',
+    postion:'absolute',
+    marginTop:0,
+    position:'static'
   },
   bigAvatar: {
     width: 80,
     height: 80,
-    marginLeft : 'auto',
-    marginRight : 'auto'
+    marginRight : 'auto',
+    position : 'static'
   },
 });
-const LayoutIg = (props) => {
+const SeeAll = (props) => {
   const { classes } = props;
   return (
     <div className = {classes.root}>
-        <h2>Discover People</h2>
+    <h2>See All</h2>
         <Grid container spacing={24}>
         {props.data.map((element, key) => ( 
-            <Grid item md={4} key={key}>
-                <ListItem 
+            <Grid item md={8} key={key}>
+                <ListItem
                     classes = {classes}
                     username = {element.username}
                     status = {element.status}
@@ -62,14 +64,12 @@ const LayoutIg = (props) => {
             </Grid>
         ))}
         </Grid>
-        <h2>See All</h2>
-        <SeeAll data={props.data}/>
     </div>
   );
 }
 
-LayoutIg.propTypes = {
+SeeAll.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(LayoutIg);
+export default withStyles(styles)(SeeAll);
